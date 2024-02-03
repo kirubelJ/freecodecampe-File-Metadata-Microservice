@@ -14,23 +14,22 @@ var app = express();
 app.use(cors());
 app.use("/public", express.static(process.cwd() + "/public"));
 
+//
 app.get("/", function (req, res) {
   res.sendFile(process.cwd() + "/views/index.html");
 });
 //
 
-app.post("/upload", upload.single("UploadFile"), (req, res) => {
+app.post("/api/fileanalyse", upload.single("upfile"), (req, res) => {
   if (!req.file) {
     return res.status(400).send("No file uploaded.");
   }
 
-  const fileInfo = {
-    name: req.UploadFile.originalname,
+  res.json({
+    name: req.file.originalname,
     type: req.file.mimetype,
     size: req.file.size,
-  };
-
-  res.json(fileInfo);
+  });
 });
 //
 

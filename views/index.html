@@ -24,8 +24,12 @@
       <p>Please Upload a File ...</p>
       <div class="view">
         <h3 id="output"></h3>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-          <input id="inputfield" type="file" name="UploadFile" />
+        <form
+          enctype="multipart/form-data"
+          method="POST"
+          action="/api/fileanalyse"
+        >
+          <input id="inputfield" type="file" name="upfile" />
           <input id="button" type="submit" value="Upload" />
         </form>
       </div>
